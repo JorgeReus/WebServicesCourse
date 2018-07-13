@@ -1,0 +1,34 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.51"
+    id "org.openrepose.gradle.plugins.jaxb" version "2.5.0"
+}
+apply plugin: 'application'
+
+mainClassName = 'MainKt'
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    main.java.srcDirs += "$project.buildDir/generated-sources/xjc"
+  }
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.51"
+    testCompile 'junit:junit:4.11'
+    jaxb "org.jvnet.jaxb2_commons:jaxb2-basics:1.11.1"
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics-ant:1.11.1'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics-annotate:1.0.4'
+    jaxb 'org.slf4j:slf4j-log4j12:1.7.25'
+    jaxb 'org.glassfish.jaxb:jaxb-xjc:2.2.11'
+    jaxb 'org.glassfish.jaxb:jaxb-runtime:2.2.11'
+}
+
+jaxb {
+    xjc {
+        taskClassname        = "org.jvnet.jaxb2_commons.xjc.XJC2Task"
+        generatePackage      = "com.reus.example"
+  }
+}
