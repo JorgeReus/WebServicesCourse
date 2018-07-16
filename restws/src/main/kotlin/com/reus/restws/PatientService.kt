@@ -4,6 +4,8 @@ import com.reus.restws.model.Patient
 import javax.ws.rs.*
 import javax.ws.rs.core.Response
 
+@Consumes("application/xml,application/json")
+@Produces("application/xml,application/json")
 @Path("/patientservice")
 interface PatientService {
 
