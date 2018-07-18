@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'war'
     id 'org.springframework.boot' version '2.0.3.RELEASE'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
     id "org.jetbrains.kotlin.plugin.noarg" version "1.2.51"
@@ -22,6 +23,9 @@ dependencies {
     // For json support
     compile group: 'org.codehaus.jackson', name: 'jackson-jaxrs', version: '1.9.13'
     compile group: 'org.codehaus.jackson', name: 'jackson-xc', version: '1.9.13'
+    // To ensure that the embedded servlet does not interfere with the servlet container
+    // (e.g tomcat) to which the war file is to be deployed
+    providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.0.3.RELEASE'
 }
 
 springBoot {
