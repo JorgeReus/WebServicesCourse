@@ -4,6 +4,7 @@ plugins {
     id 'org.springframework.boot' version '2.0.3.RELEASE'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
     id "org.jetbrains.kotlin.plugin.noarg" version "1.2.51"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
 }
 
 group 'com.reus.restws'
@@ -26,6 +27,14 @@ dependencies {
     // To ensure that the embedded servlet does not interfere with the servlet container
     // (e.g tomcat) to which the war file is to be deployed
     providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.0.3.RELEASE'
+    // Needed by Spring
+    compile 'org.jetbrains.kotlin:kotlin-reflect:1.2.51'
+    // Spring security
+    compile "org.springframework.boot:spring-boot-starter-security"
+    // For serializing/deserializing koltin classes/data-classes
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
+
+    compile "org.springframework.boot:spring-boot-devtools"
 }
 
 springBoot {
